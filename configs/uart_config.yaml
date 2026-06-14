@@ -1,0 +1,9 @@
+uart:
+  baud_rate: 115200
+  data_bits: 8
+  stop_bits: 1
+  parity: none
+  timeout_ms: 100
+  max_packet_size: 256
+  expected_start_byte: 170
+  expected_end_byte: 85
