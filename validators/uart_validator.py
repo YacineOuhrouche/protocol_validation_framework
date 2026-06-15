@@ -1,13 +1,14 @@
-# validates uart packets using configuration rules
+# validates uart packets using uart-specific rules
 
 from packet_validation.packet import Packet
+from validators.protocol_validator import ProtocolValidator
 
 
-class UartValidator:
+class UartValidator(ProtocolValidator):
 
     # creates the uart validator
     def __init__(self, config: dict):
-        self.config = config
+        super().__init__(config)
 
     # validates the full uart packet
     def validate_packet(self, packet: Packet) -> bool:
@@ -24,16 +25,6 @@ class UartValidator:
             return False
 
         return True
-
-    # validates that the packet is not empty
-    def validate_not_empty(self, packet: Packet) -> bool:
-        return not packet.is_empty()
-
-    # validates that the packet size is within the configured limit
-    def validate_packet_size(self, packet: Packet) -> bool:
-        max_packet_size = self.config["max_packet_size"]
-
-        return packet.size() <= max_packet_size
 
     # validates the expected uart start byte
     def validate_start_byte(self, packet: Packet) -> bool:
