@@ -1,0 +1,10 @@
+can:
+  bitrate: 500000
+  max_data_length: 8
+  max_packet_size: 8
+  standard_id_max: 2047
+  extended_id_max: 536870911
+  expected_ids:
+    - 256
+    - 512
+  bus_utilization_limit_percent: 80
