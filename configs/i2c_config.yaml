@@ -1,0 +1,9 @@
+i2c:
+  bus_speed_hz: 100000
+  max_packet_size: 256
+  address_bits: 7
+  expected_devices:
+    - 80
+    - 104
+  timeout_ms: 100
+  clock_stretching_allowed: true
