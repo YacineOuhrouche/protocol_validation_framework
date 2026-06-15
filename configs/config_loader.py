@@ -30,3 +30,12 @@ def load_uart_config(config_path: str = "configs/uart_config.yaml") -> Dict[str,
         raise KeyError("missing uart config section")
 
     return config["uart"]
+
+    # loads the spi configuration section
+def load_spi_config(config_path: str = "configs/spi_config.yaml") -> Dict[str, Any]:
+    config = load_config(config_path)
+
+    if "spi" not in config:
+        raise KeyError("missing spi config section")
+
+    return config["spi"]
