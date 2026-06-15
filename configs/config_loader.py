@@ -39,3 +39,12 @@ def load_spi_config(config_path: str = "configs/spi_config.yaml") -> Dict[str, A
         raise KeyError("missing spi config section")
 
     return config["spi"]
+
+# loads the i2c configuration section
+def load_i2c_config(config_path: str = "configs/i2c_config.yaml") -> Dict[str, Any]:
+    config = load_config(config_path)
+
+    if "i2c" not in config:
+        raise KeyError("missing i2c config section")
+
+    return config["i2c"]
