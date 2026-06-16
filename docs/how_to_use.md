@@ -18,22 +18,32 @@ pytest
 python -m automation.validation_pipeline
 ```
 
-## Generate Report
+## Generate Reports
 
 ```bash
 python -m automation.regression_runner
 ```
 
-## Record Packets
+## Record Packet Captures
 
 ```bash
 python record_capture.py
 ```
 
-## Replay Packets
+## Replay Packet Captures
 
 ```bash
 python replay_capture.py
 ```
 
-Reports are generated in the reports directory.
+Generated reports are stored in:
+
+```text
+reports/
+```
+
+Packet captures are stored in:
+
+```text
+captures/
+```

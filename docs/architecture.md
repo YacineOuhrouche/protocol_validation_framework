@@ -1,34 +1,45 @@
 # Architecture
 
-The Protocol Validation Framework provides automated validation, fault injection, security testing, and performance analysis for embedded communication protocols.
+The framework is organized into modular components.
 
-## Components
+## Adapters
 
-### Adapters
+Provide protocol-specific communication interfaces.
 
-Adapters provide protocol-specific communication interfaces.
-
-Supported adapters:
-
-* UART
-* SPI
-* I²C
-* CAN
-
-### Validators
-
-Validators verify protocol behavior and protocol-specific requirements.
+```text
+adapters/
+```
 
 Examples:
 
-* Packet validation
+* FakeUartAdapter
+* FakeSpiAdapter
+* FakeI2cAdapter
+* FakeCanAdapter
+
+## Validators
+
+Validate protocol behavior and packet correctness.
+
+```text
+validators/
+packet_validation/
+```
+
+Examples:
+
+* UART validation
 * CRC validation
 * Checksum validation
 * Sequence validation
 
-### Fault Injection
+## Fault Injection
 
-Fault injection simulates communication failures.
+Simulate communication failures.
+
+```text
+fault_injection/
+```
 
 Examples:
 
@@ -37,9 +48,13 @@ Examples:
 * Packet delay
 * Bus faults
 
-### Security Testing
+## Security
 
-Security modules simulate protocol attacks.
+Simulate protocol attacks.
+
+```text
+security/
+```
 
 Examples:
 
@@ -47,9 +62,13 @@ Examples:
 * Device impersonation
 * Malformed frames
 
-### Performance Analysis
+## Performance
 
-Performance modules measure communication performance.
+Measure communication performance.
+
+```text
+performance/
+```
 
 Examples:
 
@@ -57,6 +76,10 @@ Examples:
 * Latency
 * Bus utilization
 
-### Automation
+## Automation
 
-Automation modules execute validation pipelines and generate reports.
+Execute validation workflows and generate reports.
+
+```text
+automation/
+```

@@ -1,77 +1,54 @@
 # How To Add A Protocol
 
-## Step 1
+## 1. Create Configuration
 
-Create a protocol configuration file.
-
-Example:
+Add a configuration file:
 
 ```text
 configs/new_protocol_config.yaml
 ```
 
-## Step 2
+## 2. Create Adapter
 
-Create a protocol adapter.
-
-Example:
+Add a protocol adapter:
 
 ```text
 adapters/fake_new_protocol_adapter.py
 ```
 
-## Step 3
+## 3. Create Validator
 
-Create a protocol validator.
-
-Example:
+Add a validator:
 
 ```text
 validators/new_protocol_validator.py
 ```
 
-## Step 4
+## 4. Create Tests
 
-Create protocol tests.
-
-Example:
+Add protocol tests:
 
 ```text
 tests/new_protocol_tests/
 ```
 
-## Step 5
+## 5. Update Pipeline
 
-Update the validation pipeline.
-
-Example:
+Add protocol execution to:
 
 ```text
 automation/validation_pipeline.py
 ```
 
-## Step 6
+## 6. Update Regression Runner
 
-Update the regression runner.
-
-Example:
+Add protocol reporting to:
 
 ```text
 automation/regression_runner.py
 ```
 
-## Step 7
-
-Update documentation.
-
-* README
-* Architecture
-* Validation Strategy
-* Company Usage
-
-## Step 8
-
-Run the full test suite.
+## 7. Run Validation
 
 ```bash
 pytest

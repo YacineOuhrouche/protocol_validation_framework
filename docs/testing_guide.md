@@ -1,64 +1,41 @@
 # Testing Guide
 
-## Running Tests
+## Test Structure
 
-Run all tests:
+```text
+tests/
+
+├── uart_tests/
+├── spi_tests/
+├── i2c_tests/
+├── can_tests/
+├── packet_validation_tests/
+├── performance_tests/
+├── security_tests/
+├── diagnostics_tests/
+└── automation_tests/
+```
+
+## Run All Tests
 
 ```bash
 pytest
 ```
 
-Run one test file:
+## Run One Test File
 
 ```bash
 pytest tests/uart_tests/test_uart_validator.py
 ```
 
-## Test Categories
-
-### Protocol Tests
-
-* UART
-* SPI
-* I²C
-* CAN
-
-### Packet Validation Tests
-
-* CRC validation
-* Checksum validation
-* Sequence validation
-
-### Fault Injection Tests
-
-* Packet corruption
-* Packet loss
-* Packet delay
-* Bus faults
-
-### Security Tests
-
-* Replay attacks
-* Packet mutation
-* Device impersonation
-* Malformed frames
-
-### Performance Tests
-
-* Throughput
-* Latency
-* Bus utilization
-
 ## Adding Tests
 
-1. Create a test file.
+1. Create a new test file.
 2. Add validation scenarios.
 3. Execute pytest.
-4. Verify test coverage.
+4. Verify results.
 
 ## Regression Testing
-
-Run regression validation before merging changes.
 
 ```bash
 python -m automation.regression_runner
