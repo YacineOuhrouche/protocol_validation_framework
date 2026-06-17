@@ -1,173 +1,84 @@
-# Hardware Setup
+## Hardware Validation Reports
 
-This document explains how to run real hardware validation for the Protocol Validation Framework.
+UART hardware validation reports are generated as JSON files.
 
-## Current Hardware Support
+Example output:
 
-The first real hardware target is UART using PySerial.
+```text
+reports/uart_hardware_validation_report.json
+```
 
-## Requirements
+The report includes:
 
-* USB-to-UART adapter, microcontroller board, or development board
-* UART TX/RX access
-* Common ground connection
-* Python environment with PySerial installed
+* Loopback status
+* Packets captured
+* Throughput measurements
+* Validation status
 
-## Install Dependencies
+## Running UART Hardware Report Generation
+
+After running hardware validation, reports can be generated using:
 
 ```bash
-pip install -r requirements.txt
+python -m automation.uart_hardware_report
 ```
 
-## Find Serial Ports
-
-### macOS
-
-```bash
-ls /dev/tty.*
-```
-
-Example:
+Generated reports are stored in:
 
 ```text
-/dev/tty.usbserial-0001
-/dev/tty.usbmodem1101
-/dev/tty.SLAB_USBtoUART
-/dev/tty.wchusbserial
+reports/
 ```
 
-### Linux
+## Current Version 2 Scope
 
-```bash
-ls /dev/ttyUSB*
-ls /dev/ttyACM*
-```
+Version 2 focuses on introducing real hardware support while preserving compatibility with the Version 1 framework.
 
-### Windows
-
-Open Device Manager and check:
-
-```text
-Ports (COM & LPT)
-```
-
-Example:
-
-```text
-COM3
-COM5
-COM7
-```
-
-## Configure UART Port
-
-Update:
-
-```text
-configs/uart_config.yaml
-```
-
-Example:
-
-```yaml
-uart:
-  port: /dev/tty.usbserial-0001
-  baud_rate: 115200
-  data_bits: 8
-  stop_bits: 1
-  parity: none
-  timeout_ms: 100
-  max_packet_size: 256
-  expected_start_byte: 170
-  expected_end_byte: 85
-```
-
-## Loopback Wiring
-
-### USB-UART Adapter
-
-Connect:
-
-```text
-TX -> RX
-GND -> GND
-```
-
-This allows transmitted bytes to be received back by the adapter.
-
-### Microcontroller Echo Test
-
-Example:
-
-```text
-USB-UART Adapter TX -> MCU RX
-USB-UART Adapter RX -> MCU TX
-USB-UART Adapter GND -> MCU GND
-```
-
-The firmware should echo received bytes back to the sender.
-
-## Run Hardware Test
-
-```bash
-python run_real_uart_test.py
-```
-
-Expected output:
-
-```text
-available ports:
-['/dev/tty.usbserial-0001']
-
-received: aa01020355
-```
-
-If no hardware is connected:
-
-```text
-hardware test skipped: uart port not found
-```
-
-## Troubleshooting
-
-### Port Not Found
-
-Check available ports:
-
-```bash
-ls /dev/tty.*
-```
-
-Verify that the configured port matches the connected device.
-
-### No Data Received
-
-Verify:
-
-* TX/RX wiring
-* Ground connection
-* Baud rate
-* Firmware echo functionality
-
-### Permission Errors
-
-Linux:
-
-```bash
-sudo usermod -a -G dialout $USER
-```
-
-Log out and back in.
-
-## Version 2 Scope
-
-Planned hardware support:
+### Included
 
 * Real UART adapter
 * UART loopback validation
-* UART throughput validation
-* Real CAN adapter
+* UART throughput testing
+* UART packet capture
+* UART hardware validation reports
+* Real CAN adapter skeleton
+
+### Not Included Yet
+
+* Real SPI adapter
+* Real I²C adapter
+* SPI hardware timing validation
+* I²C hardware bus recovery validation
+
+These capabilities may be added in future versions.
+
+## Recommended Hardware
+
+### UART
+
+* USB-to-UART adapter
+* STM32 development board
+* ESP32 development board
+* Raspberry Pi Pico
+
+### CAN
+
+* CANable
+* USB-CAN adapter
+* CAN development boards
+
+## Future Hardware Support
+
+Planned additions include:
+
+* Real CAN validation
 * SocketCAN integration
 * Logic analyzer workflows
 * Oscilloscope workflows
-* Hardware validation reporting
+* Hardware capture analysis
+* Automated hardware regression testing
+
+## Notes
+
+The framework is designed so that validators, diagnostics, reporting, and automation components work with both simulated adapters and real hardware adapters.
+
+This allows Version 1 and Version 2 validation workflows to share the same architecture while gradually introducing hardware support.
